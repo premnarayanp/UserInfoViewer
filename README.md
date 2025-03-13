@@ -1,50 +1,80 @@
-# Welcome to your Expo app 👋
+# React Native Assignment – User Information App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+## Project Overview
+This React Native app displays user information fetched from a public API. It allows navigation between users and provides a clean UI with a custom view component.
 
-## Get started
+## Technology Stack
+- **React Native 0.76+**
+- **Expo Router** (File-based routing)
+- **Redux Toolkit** (State management)
 
-1. Install dependencies
+## Features
+- Fetches and displays **80 users** from the API.
+- **Previous/Next buttons** for navigation.
+- **Left/Right arrow buttons** to jump **10 users forward/backward**.
+- **Custom View Component** with:
+  - Rounded design with shadow.
+  - Editable fields (like address) with an edit button.  
 
-   ```bash
-   npm install
+## Installation & Setup
+### Prerequisites
+- Node.js & npm/yarn
+- Expo CLI
+
+### Steps to Run the Project
+1. **Clone the repository:**
+   ```sh
+   git clone <repository-url>
+   cd <repository-name>
+   ```
+2. **Install dependencies:**
+   ```sh
+   npm install  # or yarn install
+   ```
+3. **Start the app:**
+   ```sh
+   npx expo start
    ```
 
-2. Start the app
-
-   ```bash
-    npx expo start
-   ```
-
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
+## Folder Structure
+```
+/redux
+ ├── actions/
+ │   ├── actionTypes.js
+ │   ├── userActions.js
+ ├── reducers/
+ │   ├── userReducer.js
+ ├── store/
+ │   ├── configureStore.js
+/app
+ ├── _layout.tsx     # Root layout with Redux Provider
+ ├── index.tsx       # Fetches users and redirects to /user/0
+ ├── user/[id].tsx   # Displays user details with navigation
+/components
+ ├── CustomView.tsx  # UI component for user details
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## API Used
+- **[Random Data API](https://random-data-api.com/api/users/random_user?size=80)**
 
-## Learn more
+## Available Screens
+- **Home (`index.tsx`)** → Fetches users & redirects to the first user.
+- **User Details (`user/[id].tsx`)** → Displays user info with navigation buttons.
 
-To learn more about developing your project with Expo, look at the following resources:
+## Navigation Controls
+- **Previous (`«`)** → Moves **one user back**.
+- **Next (`»`)** → Moves **one user forward**.
+- **Left Arrow (`⬅️`)** → Moves **10 users back**.
+- **Right Arrow (`➡️`)** → Moves **10 users forward**.
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+## Custom View Component
+- **Displays user fields (email, name, etc.) inside a rounded box.**
+- **Has light background & shadow effects for better UI.**
+- **Edit button for editable fields (like Address).**
 
-## Join the community
+## Additional Information
+- **Redux** is used to store user data & current index.
+- **File-based routing** ensures smooth navigation without extra setup.
 
-Join our community of developers creating universal apps.
+This project showcases **React Native best practices** with optimized navigation and state management. 🚀
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
